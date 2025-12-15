@@ -2,14 +2,10 @@ public class Safe {
     int arrow = 50;
     int count = 0;
 
-    public void turn(String input)
-    {
-        System.out.println(input);
+    public void turn(String input) {
         char direction = input.charAt(0);
         int number = Integer.parseInt(input.substring(1));
-        // System.out.println(direction);
-        // System.out.println(number);
-        switch(direction) {
+        switch (direction) {
             case 'L':
                 turnLeft(number);
                 break;
@@ -17,40 +13,33 @@ public class Safe {
                 turnRight(number);
                 break;
             default:
-                System.out.println("wat da hail : " + direction);
+                System.out.println("Not able to parse direction: " + direction);
         }
     }
 
-    private void turnLeft(int number)
-    {
-        System.out.println("Turning left from " + arrow + " by " + number);
+    private void turnLeft(int number) {
         arrow = arrow - number;
         if (arrow > 0)
             return;
-        while (arrow < 0)
-        {
+        while (arrow < 0) {
             arrow = arrow + 100;
         }
         if (arrow == 0)
-            count ++;
+            count++;
     }
 
-    private void turnRight(int number)
-    {
-        System.out.println("Turning right from " + arrow + " by " + number);
+    private void turnRight(int number) {
         arrow = arrow + number;
         if (arrow < 100)
             return;
-        while (arrow >= 100)
-        {
+        while (arrow >= 100) {
             arrow = arrow - 100;
         }
         if (arrow == 0)
             count++;
     }
 
-    public int getAnswer()
-    {
+    public int getAnswer() {
         return count;
     }
 }
