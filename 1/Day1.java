@@ -2,7 +2,7 @@ import java.nio.file.Path;
 import java.util.Scanner;
 import java.io.IOException;
 
-public class Main {
+public class Day1 {
     public static int arrow = 50;
     public static int count = 0;
 
@@ -33,26 +33,6 @@ public class Main {
         } catch (IOException ex) {
             throw new RuntimeException("Error reading file");
         }
-
-        Safe safe2 = new Safe();
-        String[] input = {
-                "L68",
-                "L30",
-                "R48",
-                "L5",
-                "R60",
-                "L55",
-                "L1",
-                "L99",
-                "R14",
-                "L82",
-                "L32" };
-        System.out.println("The dial starts by pointing at " + safe2.arrow);
-        for (String s : input) {
-            safe2.turn(s);
-            System.out.println("\n");
-        }
-        System.out.println("Example: " + safe2.getAnswer());
     }
 
     private static void handleTurn(String input) {
