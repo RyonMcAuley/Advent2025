@@ -26,6 +26,7 @@ public class Safe {
         }
         while (arrow < 0) {
             arrow = arrow + 100;
+            // don't count as passing zero if starting from 0
             if (!fromZero) {
                 count++;
             }
