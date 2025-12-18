@@ -8,31 +8,51 @@ public class Main {
 
     public static void main(String[] args) {
 
-        long start = System.currentTimeMillis();
+        // long start = System.currentTimeMillis();
         try (var scanner = new Scanner(Path.of("code.txt"))) {
             while (scanner.hasNextLine()) {
                 handleTurn(scanner.nextLine());
             }
-            long end = System.currentTimeMillis();
+            // long end = System.currentTimeMillis();
             System.out.println("Quick answer: " + count);
-            System.out.println("Time elapsed: " + (end - start));
+            // System.out.println("Time elapsed: " + (end - start));
         } catch (IOException ex) {
             throw new RuntimeException("Error reading file");
         }
 
         // alt approach
-        long start2 = System.currentTimeMillis();
+        // long start2 = System.currentTimeMillis();
         Safe safe = new Safe();
         try (var scanner = new Scanner(Path.of("code.txt"))) {
             while (scanner.hasNextLine()) {
                 safe.turn(scanner.nextLine());
             }
-            long end2 = System.currentTimeMillis();
+            // long end2 = System.currentTimeMillis();
             System.out.println("Object answer: " + safe.getAnswer());
-            System.out.println("Time elapsed: " + (end2 - start2));
+            // System.out.println("Time elapsed: " + (end2 - start2));
         } catch (IOException ex) {
             throw new RuntimeException("Error reading file");
         }
+
+        Safe safe2 = new Safe();
+        String[] input = {
+                "L68",
+                "L30",
+                "R48",
+                "L5",
+                "R60",
+                "L55",
+                "L1",
+                "L99",
+                "R14",
+                "L82",
+                "L32" };
+        System.out.println("The dial starts by pointing at " + safe2.arrow);
+        for (String s : input) {
+            safe2.turn(s);
+            System.out.println("\n");
+        }
+        System.out.println("Example: " + safe2.getAnswer());
     }
 
     private static void handleTurn(String input) {
